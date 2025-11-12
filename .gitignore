@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project specific - IDS XAI
+output/*.png
+output/*.pdf
+output/*.jpg
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
