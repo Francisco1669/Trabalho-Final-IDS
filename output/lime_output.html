@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divBM45IX6RJ5VETE2"></div>
+        <div class="lime top_div" id="top_divR68D72EGINOIG6F"></div>
         
         <script>
-        var top_div = d3.select('#top_divBM45IX6RJ5VETE2').classed('lime top_div', true);
+        var top_div = d3.select('#top_divR68D72EGINOIG6F').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Normal", "Ataque"], [0.0012443065643310547, 0.998755693435669]);
+            var pp = new lime.PredictProba(pp_svg, ["Normal", "Ataque"], [0.0014886260032653809, 0.9985113739967346]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Normal", "Ataque"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["protocol_type <= 1.00", 0.31117652827894476], ["dst_bytes <= 0.00", 0.25050485224317315], ["su_attempted <= 0.00", -0.23587474301889774], ["difficulty > 18.00", -0.16652931534861193], ["num_file_creations <= 0.00", -0.12443790658677134], ["land <= 0.00", -0.12068060758582042], ["duration <= 0.00", -0.08269164450207206], ["dst_host_srv_rerror_rate <= 0.00", -0.08043822598852532], ["wrong_fragment <= 0.00", -0.06830500389466831], ["src_bytes <= 0.00", 0.06384848937907442]], 1, exp_div);
+                exp.show([["protocol_type <= 1.00", 0.3770956262636951], ["dst_host_srv_rerror_rate <= 0.00", -0.17811891765731766], ["su_attempted <= 0.00", 0.17037604783066446], ["dst_bytes <= 0.00", 0.15383375270725042], ["dst_host_srv_serror_rate > 0.00", 0.1463401814234754], ["urgent <= 0.00", 0.12888546648851162], ["3.00 < count <= 132.00", 0.09761995342891186], ["num_file_creations <= 0.00", -0.08778373244901286], ["logged_in <= 0.00", 0.07568110345746457], ["is_host_login <= 0.00", -0.06297960697940842]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["protocol_type", "1.00", 0.31117652827894476], ["dst_bytes", "0.00", 0.25050485224317315], ["su_attempted", "0.00", -0.23587474301889774], ["difficulty", "19.00", -0.16652931534861193], ["num_file_creations", "0.00", -0.12443790658677134], ["land", "0.00", -0.12068060758582042], ["duration", "0.00", -0.08269164450207206], ["dst_host_srv_rerror_rate", "0.00", -0.08043822598852532], ["wrong_fragment", "0.00", -0.06830500389466831], ["src_bytes", "0.00", 0.06384848937907442]], 1, raw_div);
+            exp.show_raw_tabular([["protocol_type", "1.00", 0.3770956262636951], ["dst_host_srv_rerror_rate", "0.00", -0.17811891765731766], ["su_attempted", "0.00", 0.17037604783066446], ["dst_bytes", "0.00", 0.15383375270725042], ["dst_host_srv_serror_rate", "0.97", 0.1463401814234754], ["urgent", "0.00", 0.12888546648851162], ["count", "34.00", 0.09761995342891186], ["num_file_creations", "0.00", -0.08778373244901286], ["logged_in", "0.00", 0.07568110345746457], ["is_host_login", "0.00", -0.06297960697940842]], 1, raw_div);
         
         </script>
         </body></html>
