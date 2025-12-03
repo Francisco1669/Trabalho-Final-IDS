@@ -25,6 +25,29 @@ O desenvolvimento foi dividido nas seguintes etapas:
     * Implementação do **LIME** (*Local Interpretable Model-agnostic Explanations*) para geração de regras de decisão locais.
     * Análise comparativa entre as duas abordagens para validar a confiabilidade das detecções e identificar redundâncias (correlações) nos dados.
 
+
+## Resultados e Discussão
+
+Os experimentos validaram tanto a eficácia do classificador quanto a necessidade de múltiplas ferramentas de auditoria para garantir a confiabilidade do sistema.
+
+### 1. Desempenho do Classificador (XGBoost)
+Utilizando o hiperparâmetro `scale_pos_weight` para tratar o desbalanceamento nativo do NSL-KDD, o modelo priorizou a sensibilidade da detecção, vital para cenários de segurança crítica.
+
+* **Recall (Classe Ataque):** **0.99** (O modelo falhou em detectar apenas 18 intrusões em um universo de 2.909 tentativas).
+* **F1-Score Geral:** **0.99**.
+* **Conclusão:** O classificador demonstrou robustez excepcional, mantendo uma taxa de Falsos Positivos extremamente baixa (11 ocorrências).
+
+### 2. Comparativo SHAP vs. LIME
+O principal objetivo deste projeto foi a análise das diferenças entre os métodos de explicabilidade de IA. A alta correlação entre as métricas de rede (identificada na matriz de correlação) impactou as ferramentas de forma distinta:
+
+| Critério | SHAP (Consistência Global) | LIME (Interpretação Local) |
+| :--- | :--- | :--- |
+| **Foco da Explicação** | **Causa Raiz Técnica:** Apontou a taxa de erros de sincronização (`serror_rate`) como fator determinante (assinatura de *SYN Flood*). | **Regras de Fronteira:** Focou em sintomas secundários, como a ausência de resposta (`dst_bytes = 0`) e protocolo. |
+| **Robustez à Correlação** | **Alta:** Lidou bem com a multicolinearidade, atribuindo peso à variável representativa e ignorando redundâncias. | **Média/Baixa:** Apresentou instabilidade ao gerar perturbações em cenários de alta dependência entre variáveis. |
+| **Aplicação Recomendada** | Auditoria Forense e validação de engenharia do modelo. | Triagem rápida de alertas para operadores de Nível 1. |
+
+Portanto, o projeto validou um classificador XGBoost binário (com Recall de 0.99) para detecção de intrusões, evidenciando que a confiabilidade do sistema depende da ferramenta de auditoria escolhida. A análise comparativa demonstrou que o SHAP oferece maior robustez ao lidar consistentemente com a alta correlação dos dados e identificar a causa raiz técnica, superando a instabilidade do LIME frente à redundância estatística. Enquanto o LIME lida melhor em um cenário detriagem rápida com regras simples, o SHAP é indispensável para a validação mais detalhada.
+
 ## Organização do Repositório
 
 A estrutura de diretórios deste projeto está organizada da seguinte forma:
@@ -52,4 +75,6 @@ Após criar o ambiente virtual e ativa-lo, instale as dependências:
 pip intall pandas numpy scikit-learn xgboost plotly shap lime 
 ```
 
----
+
+## Link do Artigo Final
+Para o acessar o artigo basta entrar no [link](https://pt.overleaf.com/6355131817sgrcggxyyxnw#b66ec9).
